@@ -12,6 +12,7 @@ export const addContact = () => {
 
         <div className="container">
             <form>
+                <h2>Add a new contact</h2>
                 <div class="mb-3">
                     <label className="form-label">Full Name</label>
                     <input type="name" class="form-control" id="inputName" placeholder="Enter full name"></input>
