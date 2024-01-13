@@ -19,23 +19,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				*/
 			},
 
+			updateData: () => {
+				
+			},
+
 			addContact: () => {
 
 			},
 
 			deleteContact: () => {
 				
-			},
-
-			changeColor: (index, color) => {
-				const store = getStore();
-
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				setStore({ demo: demo });
 			}
 		}
 	};
