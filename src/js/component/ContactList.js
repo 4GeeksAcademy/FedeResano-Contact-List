@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Context } from "..store/appContext";
+import { Context } from "../store/appContext";
 import ContactCard from "./ContactCard";
 
 const ContactList = () => {

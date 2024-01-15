@@ -1,14 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-
 			
+
 		},
 		actions: {
 			loadData: async () => {
 				try {
 					const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/");
-					const data = await resp.json;
+					const data = await resp.json();
 					setStore({ contactList: data });
 				} catch (error) {
 					console.error("Error fetching data: ", error);
@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			deleteContact: async (contactId) => {
 				try {
-					const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/", {
+					const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/${contactId}", {
 						method: "DELETE",
 					});
 					const updatedList = getStore().contactList.filter(contact => contact.id !== contactId);
