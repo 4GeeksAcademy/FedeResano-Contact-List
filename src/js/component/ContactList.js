@@ -12,8 +12,13 @@ const ContactList = () => {
 
     return (
         <div className="contact-list">
-            {store.contactList.map((contact, index) => (<ContactCard key={index} contact={contact} />
-            ))}
+            {store.contactList.length > 0 ? (
+                store.contactList.map((contact, index) => (
+                    <ContactCard key={index} contact={contact} />
+                ))
+            ) : (
+                <p>No contacts available. Add new contacts</p>
+            )}
         </div>
     );
 };
