@@ -1,6 +1,4 @@
 import React from "react";
-import AddContact from "./addContact";
-import ContactList from "./contact";
 import "../../styles/home.css";
 
 export const Home = () => (

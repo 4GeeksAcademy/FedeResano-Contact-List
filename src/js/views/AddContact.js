@@ -34,8 +34,8 @@ const AddContact = () => {
                         className="form-control"
                         id="inputName"
                         name="name"
-                        value="newContact.name"
-                        onChange="inputChange"
+                        value={newContact.name}
+                        onChange={inputChange}
                         placeholder="Enter full name"
                         required
                     />
@@ -49,8 +49,8 @@ const AddContact = () => {
                         className="form-control"
                         id="inputEmail"
                         name="email"
-                        value="newContact.email"
-                        onChange="inputChange"
+                        value={newContact.email}
+                        onChange={inputChange}
                         placeholder="Enter email"
                         required
                     />
@@ -65,8 +65,8 @@ const AddContact = () => {
                         className="form-control"
                         id="inputPhone"
                         name="phone"
-                        value="newContact.phone"
-                        onChange="inputChange"
+                        value={newContact.phone}
+                        onChange={inputChange}
                         placeholder="Enter phone number"
                         required
                     />
@@ -81,8 +81,8 @@ const AddContact = () => {
                         className="form-control"
                         id="inputAddress"
                         name="address"
-                        value="newContact.address"
-                        onChange="inputChange"
+                        value={newContact.address}
+                        onChange={inputChange}
                         placeholder="Enter address"
                         required
                     />

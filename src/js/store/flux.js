@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			
+			contactList: []
 
 		},
 		actions: {
@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			deleteContact: async (contactId) => {
 				try {
-					const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/${contactId}", {
+					const resp = await fetch(`https://playground.4geeks.com/apis/fake/contact/${contactId}`, {
 						method: "DELETE",
 					});
 					const updatedList = getStore().contactList.filter(contact => contact.id !== contactId);
