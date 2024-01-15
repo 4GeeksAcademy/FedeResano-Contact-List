@@ -12,19 +12,48 @@ const AddContact = () => {
         email: "",
     });
 
+    const [imagePreview, setImagePreview] = useState(null);
+
     const inputChange = (e) => {
-        setNewContact({ ...newContact, [e.target.name]: e.target.value });
+        if (e.target.name === "image") {
+            const file = e.target.files[0];
+            setNewContact({ ...newContact, image: file })
+            setImagePreview(URL.createObjectURL(file));
+        } else {
+            setNewContact({ ...newContact, [e.target.name]: e.target.value });
+        }
     };
 
     const submitForm = (e) => {
         e.preventDefault();
         actions.addContact(newContact);
+        setNewContact({
+            image: "",
+            name: "",
+            email: "",
+            phone: "",
+            address: "",
+        })
         history.push("/");
     }
 
     return (
         <div className="add-contact">
             <form onSubmit={submitForm}>
+                <div className="mb-3">
+                    <label htmlFor="inputImage" className="form-label">
+                        Profile picture
+                    </label>
+                    <input 
+                        type="file"
+                        className="form-control"
+                        id="inputImage"
+                        name="image"
+                        accept="image/*"
+                        onChange={inputChange}
+                    />
+                    {imagePreview && (<img src={imagePreview} alt="Profile picture" className="img-preview"/>)}
+                </div>
                 <div className="mb-3">
                     <label htmlFor="inputName" className="form-label">
                         Full Name
