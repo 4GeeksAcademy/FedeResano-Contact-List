@@ -9,6 +9,12 @@ export const contactList = () => {
 
     const { store, actions } = useContext(Context);
 
+    let contacts = [];
+
+    const addContactToList = () => {
+        
+    }
+
     return (
 
         <div className="container">
