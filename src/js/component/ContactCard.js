@@ -5,10 +5,6 @@ const ContactCard = ({ contact }) => {
 
     const { actions } = useContext(Context);
 
-    const editContact = () => {
-        actions.editContact()
-    }
-
     const deleteContact = () => {
         actions.deleteContact(contact.id);
     }
@@ -16,14 +12,14 @@ const ContactCard = ({ contact }) => {
     return (
         <div className="contact-card">
             <img src={contact.image} alt={contact.name}></img>
-            <p>{contact.name}</p>
+            <p>{contact.full_name}</p>
             <p>{contact.email}</p>
             <p>{contact.phone}</p>
             <p>{contact.address}</p>
             <div className="contact-actions">
-                <button onClick={editContact}>
+                <Link to={`/contacts/edit/${contact.id}`}>
                     <i className="fas fa-pencil-alt"></i> Edit
-                </button>
+                </Link>
                 <button onClick={deleteContact}>
                     <i className="fas fa-trash"></i> Delete
                 </button>

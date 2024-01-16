@@ -33,7 +33,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			editContact: async (contactId, updatedContact) => {
 				try {
-					const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/${contactId}", {
+					const resp = await fetch(`https://playground.4geeks.com/apis/fake/contact/${contactId}`, {
 						method: "PUT",
 						headers: {
 							"Content-Type": "application/json"
@@ -49,6 +49,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			deleteContact: async (contactId) => {
+				const userConfirmed = window.confirm("Are you sure you want to delete this contact?");
+				if (!userConfirmed) {
+					return;
+				}
+
 				try {
 					const resp = await fetch(`https://playground.4geeks.com/apis/fake/contact/${contactId}`, {
 						method: "DELETE",
