@@ -44,7 +44,7 @@ const AddContact = () => {
                     <label htmlFor="inputImage" className="form-label">
                         Profile picture
                     </label>
-                    <input 
+                    <input
                         type="file"
                         className="form-control"
                         id="inputImage"
@@ -52,7 +52,7 @@ const AddContact = () => {
                         accept="image/*"
                         onChange={inputChange}
                     />
-                    {imagePreview && (<img src={imagePreview} alt="Profile picture" className="img-preview"/>)}
+                    {imagePreview && (<img src={imagePreview} alt="Profile picture" className="img-preview" />)}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="inputName" className="form-label">

@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			loadData: async () => {
 				try {
-					const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/");
+					const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/agenda");
 					const data = await resp.json();
 					setStore({ contactList: data });
 				} catch (error) {
@@ -31,17 +31,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			editContact: async (editedContact) => {
+			editContact: async (contactId, updatedContact) => {
 				try {
-					const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/", {
+					const resp = await fetch("https://playground.4geeks.com/apis/fake/contact/${contactId}", {
 						method: "PUT",
 						headers: {
 							"Content-Type": "application/json"
 						},
-						body: JSON.stringify(editedContact),
+						body: JSON.stringify(updatedContact),
 					});
 					const data = await resp.json();
-					const updatedList = getStore().contactList.map(contact => (contact.id === updatedContact.id ? data : contact));
+					const updatedList = getStore().contactList.map(contact => (contact.id === contactId ? data : contact));
 					setStore({ contactList: updatedList });
 				} catch (error) {
 					console.error("Error editing contact: ", error);
