@@ -29,7 +29,7 @@ const EditContact = ({ match, history }) => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        actions.editedContact(contactId, editedContact);
+        actions.editContact(contactId, editedContact);
         history.push("/");
     }
 
