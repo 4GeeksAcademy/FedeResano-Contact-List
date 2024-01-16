@@ -4,15 +4,18 @@ import { Context } from "../store/appContext";
 
 const AddContact = () => {
     const { actions } = useContext(Context);
+
+    const defaultImage = "https://imgs.search.brave.com/a876Da81HKl25GlgRhekUOvAsbnK9T556iwGHh9_xVE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9wbmcu/cG5ndHJlZS5jb20v/cG5nLWNsaXBhcnQv/MjAyMTA5MTcvb3Vy/bWlkL3BuZ3RyZWUt/ZXhxdWlzaXRlLXdl/YnBhZ2Utd2l0aC1h/dmF0YXItdXNlci1w/bGFjZWhvbGRlci1w/bmctaW1hZ2VfMzkx/MDExMS5qcGc";
+
     const [newContact, setNewContact] = useState({
-        image: "",
+        image: defaultImage,
         name: "",
         address: "",
         phone: "",
         email: "",
     });
 
-    const [imagePreview, setImagePreview] = useState(null);
+    const [imagePreview, setImagePreview] = useState(defaultImage);
 
     const inputChange = (e) => {
         if (e.target.name === "image") {
@@ -28,7 +31,7 @@ const AddContact = () => {
         e.preventDefault();
         actions.addContact(newContact);
         setNewContact({
-            image: "",
+            image: defaultImage,
             name: "",
             email: "",
             phone: "",
