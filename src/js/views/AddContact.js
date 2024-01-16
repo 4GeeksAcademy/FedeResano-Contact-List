@@ -9,7 +9,7 @@ const AddContact = () => {
 
     const [newContact, setNewContact] = useState({
         image: defaultImage,
-        name: "",
+        full_name: "",
         address: "",
         phone: "",
         email: "",
@@ -27,18 +27,32 @@ const AddContact = () => {
         }
     };
 
-    const submitForm = (e) => {
+    const submitForm = async (e) => {
         e.preventDefault();
-        actions.addContact(newContact);
-        setNewContact({
-            image: defaultImage,
-            name: "",
-            email: "",
-            phone: "",
-            address: "",
-        })
-        history.push("/");
-    }
+
+        try {
+            await actions.addContact({
+                full_name: newContact.full_name,
+                email: newContact.email,
+                agenda_slug: "my_agenda",
+                address: newContact.address,
+                phone: newContact.phone,
+                image: newContact.image,
+            });
+
+            setNewContact({
+                image: defaultImage,
+                full_name: "",
+                email: "",
+                phone: "",
+                address: "",
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
 
     return (
         <div className="add-contact">
