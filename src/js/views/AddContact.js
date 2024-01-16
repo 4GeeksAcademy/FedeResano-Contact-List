@@ -53,82 +53,78 @@ const AddContact = ({ history }) => {
 
     return (
         <div className="add-contact">
-            <h2>Add New Contact</h2>
             <div className="container">
+                <h2>Add New Contact</h2>
                 <form onSubmit={submitForm}>
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="mb-3">
-                                <label htmlFor="inputName" className="form-label">
-                                    Full Name
-                                </label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="inputName"
-                                    name="full_name"
-                                    value={newContact.full_name}
-                                    onChange={inputChange}
-                                    placeholder="Enter full name"
-                                    required
-                                />
-                            </div>
-
-                            <div className="mb-3">
-                                <label htmlFor="inputEmail" className="form-label">
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    id="inputEmail"
-                                    name="email"
-                                    value={newContact.email}
-                                    onChange={inputChange}
-                                    placeholder="Enter email"
-                                    required
-                                />
-                            </div>
-
-
-                            <div className="mb-3">
-                                <label htmlFor="inputPhone">Phone</label>
-                                <input
-                                    type="tel"
-                                    className="form-control"
-                                    id="inputPhone"
-                                    name="phone"
-                                    value={newContact.phone}
-                                    onChange={inputChange}
-                                    placeholder="Enter phone number"
-                                    required
-                                />
-                            </div>
-
-                            <div className="mb-3">
-                                <label htmlFor="inputAddress">Address</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="inputAddress"
-                                    name="address"
-                                    value={newContact.address}
-                                    onChange={inputChange}
-                                    placeholder="Enter address"
-                                    required
-                                />
-                            </div>
-
-                            <div className="mb-3">
-                                <button type="submit" className="btn btn-primary">
-                                    Save contact
-                                </button>
-                            </div>
-                        </div>
+                    <div className="mb-3">
+                        <label htmlFor="inputName" className="form-label">
+                            Full Name
+                        </label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="inputName"
+                            name="full_name"
+                            value={newContact.full_name}
+                            onChange={inputChange}
+                            placeholder="Enter full name"
+                            required
+                        />
                     </div>
-                </form>
+
+                    <div className="mb-3">
+                        <label htmlFor="inputEmail" className="form-label">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            id="inputEmail"
+                            name="email"
+                            value={newContact.email}
+                            onChange={inputChange}
+                            placeholder="Enter email"
+                            required
+                        />
+                    </div>
+
+
+                    <div className="mb-3">
+                        <label htmlFor="inputPhone">Phone</label>
+                        <input
+                            type="tel"
+                            className="form-control"
+                            id="inputPhone"
+                            name="phone"
+                            value={newContact.phone}
+                            onChange={inputChange}
+                            placeholder="Enter phone number"
+                            required
+                        />
+                    </div>
+
+                    <div className="mb-3">
+                        <label htmlFor="inputAddress">Address</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="inputAddress"
+                            name="address"
+                            value={newContact.address}
+                            onChange={inputChange}
+                            placeholder="Enter address"
+                            required
+                        />
+                    </div>
+
+                    <div className="mb-3">
+                        <button type="submit" className="btn btn-primary">
+                            Save contact
+                        </button>
+                    </div>
+                </form >
             </div>
-        </div>
+        </div >
     );
 };
 
