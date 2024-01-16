@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 
 const ContactCard = ({ contact }) => {
@@ -31,16 +30,6 @@ const ContactCard = ({ contact }) => {
             </div>
         </div>
     );
-};
-
-ContactCard.propTypes = {
-    contact: PropTypes.shape({
-        image: PropTypes.string,
-        name: PropTypes.string,
-        email: PropTypes.string,
-        phone: PropTypes.string,
-        address: PropTypes.string,
-    }).isRequired,
 };
 
 export default ContactCard;
