@@ -58,6 +58,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch(`https://playground.4geeks.com/apis/fake/contact/${contactId}`, {
 						method: "DELETE",
 					});
+                    if(!resp.ok){
+                        console.error("Error fetching backend")
+                        return
+                    }
 					const updatedList = getStore().contactList.filter(contact => contact.id !== contactId);
 					setStore({ contactList: updatedList });
 				} catch (error) {
