@@ -2,9 +2,8 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-
-export const AddContact = () => {
-    const { actions } = useContext(Context)
+export const EditContact = () => {
+    const { store, actions } = useContext(Context)
     const [nameInput, setNameInput] = useState("")
     const [emailInput, setEmailInput] = useState("")
     const [phoneInput, setPhoneInput] = useState("")
@@ -13,11 +12,32 @@ export const AddContact = () => {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        const fetchContact = async () => {
+            try {
+                const resp = await actions.apiFetch(`agendas/fedeagenda/contacts/${contactId}`);
+                const data = await resp.json();
+                setNameInput(data.name);
+                setEmailInput(data.email);
+                setPhoneInput(data.phone);
+                setAddressInput(data.address);
+            } catch (error) {
+                console.error("Error fetching contact: ", error);
+                setErrorText("Error fetching contact details."); 
+            }
+        };
+
+        if (contactId) { 
+            fetchContact();
+        }
+    }, [actions, contactId]);
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
         if (validate) {
-            actions.addContact({
+            actions.editContact({
+                id: contactID,
                 "name": nameInput,
                 "email": emailInput,
                 "agenda_slug": "fedeagenda",
@@ -61,7 +81,7 @@ export const AddContact = () => {
 
     return (
         <div className="container pt-4">
-            <h2>Add a new contact</h2>
+            <h2>Edit contact</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label for="inputName" className="form-label">Full name</label>

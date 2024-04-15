@@ -3,10 +3,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
-import AddContact from "./views/AddContact";
-import Contact from "./views/Contact";
+import { AddContact } from "./views/addContact";
+import { ContactList } from "./views/contactList";
+import { EditContact } from "./views/editContact";
+
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -15,12 +15,11 @@ const Layout = () => {
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
 					<Routes>
-						<Route path="/" element={<Contact />} />
+						<Route path="/" element={<ContactList />} />
 						<Route path="/add" element={<AddContact />} />
+						<Route path="/edit/${contactId}" element={<EditContact />} />
 					</Routes>
-					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
