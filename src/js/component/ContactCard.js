@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faLocationDot, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const ContactCard = ({ contact }) => {
-    const { store, actions } = useContext(Context);
+    const { actions } = useContext(Context);
 
     const navigate = useNavigate()
 
@@ -32,7 +32,7 @@ const ContactCard = ({ contact }) => {
                     <h3 className="contact-name">{contact.name}</h3>
                     <div className="info-row d-flex align-items-center">
                         <FontAwesomeIcon icon={faEnvelope} className="info-icon" />
-                        <p>{contact.email}</p>
+                        <p >{contact.email}</p>
                     </div>
                     <div className="info-row d-flex align-items-center">
                         <FontAwesomeIcon icon={faPhone} className="info-icon" />
@@ -47,7 +47,7 @@ const ContactCard = ({ contact }) => {
                     <button className="btn btn-success m-2" onClick={goToEdit}>
                         <FontAwesomeIcon icon={faPencil} /> Edit
                     </button>
-                    <button className="btn btn-danger m-2" onClick={deleteContact}>
+                    <button className="btn btn-danger m-2" onClick={() => deleteContact(contact.id)}>
                         <FontAwesomeIcon icon={faTrash} /> Delete
                     </button>
                 </div>

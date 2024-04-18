@@ -12,35 +12,13 @@ export const EditContact = () => {
     const { contactId } = useParams()
     const navigate = useNavigate()
 
-    useEffect(() => {
-        const findContact = () => {
-            const matchingContact = store.contactList.find(
-                (contact) => contact.id === contactId
-            );
-
-            if (matchingContact) {
-                setNameInput(matchingContact.name);
-                setEmailInput(matchingContact.email);
-                setPhoneInput(matchingContact.phone);
-                setAddressInput(matchingContact.address);
-            } else {
-                console.error("Error: Contact not found in store");
-                setErrorText("Contact not found.");
-            }
-        };
-
-        findContact();
-    }, [store.contactList, contactId]);
-
     const handleSubmit = (e) => {
         e.preventDefault()
 
         if (validate) {
-            actions.editContact({
-                id: contactId,
+            actions.editContact(contactId, {
                 "name": nameInput,
                 "email": emailInput,
-                "agenda_slug": "fedeagenda",
                 "phone": phoneInput,
                 "address": addressInput
             })

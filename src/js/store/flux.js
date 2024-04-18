@@ -43,9 +43,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			addContact: async (newContact) => {
 				try {
-					const resp = await getActions().apiFetch("agendas/fedeagenda/contacts", "POST", {
+					const resp = await getActions().apiFetch("agendas/fedeagenda/contacts", "POST",
 						newContact
-					});
+					);
 
 					if (!resp.ok) {
 						console.error("Error adding contact:", resp.statusText);
@@ -69,7 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			editContact: async (contactId, updatedContact) => {
 				try {
-					const resp = await getActions().apiFetch(`agendas/fedeagenda/contacts/${contactId}`, "GET", updatedContact);
+					const resp = await getActions().apiFetch(`agendas/fedeagenda/contacts/${contactId}`, "PUT", updatedContact);
 					const data = await resp.json();
 					const updatedList = getStore().contactList.map(contact => (contact.id === contactId ? data : contact));
 					setStore({ contactList: updatedList });
@@ -85,7 +85,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 				try {
-					const resp = await getActions().apiFetch(`/agendas/fedeagenda/contacts/${contactId}`, "DELETE",)
+					const resp = await getActions().apiFetch(`agendas/fedeagenda/contacts/${contactId}`, "DELETE")
 					if (!resp.ok) {
 						console.error("Error fetching backend")
 						return

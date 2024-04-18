@@ -4,30 +4,19 @@ import { Context } from "../store/appContext";
 
 
 export const AddContact = () => {
-    const { store, actions } = useContext(Context)
+    const { actions } = useContext(Context)
     const [nameInput, setNameInput] = useState("")
     const [emailInput, setEmailInput] = useState("")
     const [phoneInput, setPhoneInput] = useState("")
     const [addressInput, setAddressInput] = useState("")
     const [errorText, setErrorText] = useState("")
-
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
         if (validate) {
-            console.log("New contact:", { name: nameInput, email: emailInput, phone: phoneInput, address: addressInput });
-            actions.addContact({
-                "name": nameInput,
-                "email": emailInput,
-                "phone": phoneInput,
-                "address": addressInput
-            })
-            setNameInput("")
-            setEmailInput("")
-            setPhoneInput("")
-            setAddressInput("")
+            actions.addContact({ "name": nameInput, "email": emailInput, "phone": phoneInput, "address": addressInput })
             navigate("/")
         } else {
             console.error("Error al validar datos")
