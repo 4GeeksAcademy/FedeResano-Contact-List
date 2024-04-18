@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Context } from "../store/appContext.js"
 import { Link } from "react-router-dom"
@@ -6,7 +6,9 @@ import ContactCard from "../component/ContactCard.js"
 
 export const ContactList = () => {
     const { store, actions } = useContext(Context)
+    const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate(Context)
+
 
     const goToAddContact = () => {
         navigate("/add")
@@ -16,7 +18,8 @@ export const ContactList = () => {
         const fetchData = async () => {
             try {
                 await actions.loadAgendaContacts();
-                console.log("store.contactList:", store.contactList)
+                setIsLoading(false)
+                console.log(store.contactList)
             } catch (error) {
                 console.error("Error fetching contacts:", error);
             }
@@ -33,14 +36,17 @@ export const ContactList = () => {
                     </button>
                 </div>
                 <h2>Contacts </h2>
-                {store.contactList ? (store.contactList.length > 0 ? (
-                    store.contactList.map((contact) => (
-                        <ContactCard key={contact.id} contact={contact} />
-                    ))
+                {isLoading ? (
+                    <p>Loading contacts...</p>
                 ) : (
-                    <p>No contacts found</p>
-                )) : <p>Loading contacts..</p>
-                }
+                    store.contactList.length === 0 ? (
+                        <p>No contacts found</p>
+                    ) : (
+                        store.contactList.map((contact) => (
+                            <ContactCard key={contact.id} contact={contact} />
+                        ))
+                    )
+                )}
             </div>
         </div>
     );

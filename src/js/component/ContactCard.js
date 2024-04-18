@@ -20,7 +20,7 @@ const ContactCard = ({ contact }) => {
 
     return (
         <div className="contact-card">
-            <img src={contact.image} alt={contact.name}></img>
+            <img src="https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg" alt={contact.name}></img>
             <p>{contact.name}</p>
             <FontAwesomeIcon icon={faEnvelope} /><p>{contact.email}</p>
             <FontAwesomeIcon icon={faPhone} /><p>{contact.phone}</p>
