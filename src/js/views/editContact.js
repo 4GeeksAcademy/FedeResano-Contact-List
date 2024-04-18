@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const EditContact = () => {
@@ -9,35 +9,35 @@ export const EditContact = () => {
     const [phoneInput, setPhoneInput] = useState("")
     const [addressInput, setAddressInput] = useState("")
     const [errorText, setErrorText] = useState("")
-
+    const { contactId } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
-        const fetchContact = async () => {
-            try {
-                const resp = await actions.apiFetch(`agendas/fedeagenda/contacts/${contactId}`);
-                const data = await resp.json();
-                setNameInput(data.name);
-                setEmailInput(data.email);
-                setPhoneInput(data.phone);
-                setAddressInput(data.address);
-            } catch (error) {
-                console.error("Error fetching contact: ", error);
-                setErrorText("Error fetching contact details."); 
+        const findContact = () => {
+            const matchingContact = store.contactList.find(
+                (contact) => contact.id === contactId
+            );
+
+            if (matchingContact) {
+                setNameInput(matchingContact.name);
+                setEmailInput(matchingContact.email);
+                setPhoneInput(matchingContact.phone);
+                setAddressInput(matchingContact.address);
+            } else {
+                console.error("Error: Contact not found in store");
+                setErrorText("Contact not found.");
             }
         };
 
-        if (contactId) { 
-            fetchContact();
-        }
-    }, [actions, contactId]);
+        findContact();
+    }, [store.contactList, contactId]);
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
         if (validate) {
             actions.editContact({
-                id: contactID,
+                id: contactId,
                 "name": nameInput,
                 "email": emailInput,
                 "agenda_slug": "fedeagenda",

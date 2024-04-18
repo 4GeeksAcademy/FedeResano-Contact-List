@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 					const resp = await getActions().apiFetch(`agendas/fedeagenda/contacts`, "GET");
 					const data = await resp.json();
-					setStore({ contactList: data });
+					setStore({ contactList: data.contacts });
 				} catch (error) {
 					console.error("Error fetching data: ", error);
 				}
@@ -46,8 +46,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await getActions().apiFetch("agendas/fedeagenda/contacts", "POST", {
 						newContact
 					});
+
+					if (!resp.ok) {
+						console.error("Error adding contact:", resp.statusText);
+						return;
+					}
+
 					const data = await resp.json();
-					setStore({ contactList: [...getStore().contactList, data] });
+					console.log("New contact:", data.contacts);
+
+					setStore({ contactList: [...store.contactList, newContact] });
+
+					setNameInput("");
+					setEmailInput("");
+					setPhoneInput("");
+					setAddressInput("");
+					navigate("/");
 				} catch (error) {
 					console.error("Error adding contact: ", error);
 				}

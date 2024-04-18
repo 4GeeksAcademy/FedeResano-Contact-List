@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 
 
 export const AddContact = () => {
-    const { actions } = useContext(Context)
+    const { store, actions } = useContext(Context)
     const [nameInput, setNameInput] = useState("")
     const [emailInput, setEmailInput] = useState("")
     const [phoneInput, setPhoneInput] = useState("")
@@ -17,10 +17,10 @@ export const AddContact = () => {
         e.preventDefault()
 
         if (validate) {
+            console.log("New contact:", { name: nameInput, email: emailInput, phone: phoneInput, address: addressInput });
             actions.addContact({
                 "name": nameInput,
                 "email": emailInput,
-                "agenda_slug": "fedeagenda",
                 "phone": phoneInput,
                 "address": addressInput
             })
