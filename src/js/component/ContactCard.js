@@ -31,15 +31,15 @@ const ContactCard = ({ contact }) => {
                 <div className="col-md-4">
                     <h3 className="contact-name">{contact.name}</h3>
                     <div className="info-row d-flex align-items-center">
-                        <FontAwesomeIcon icon={faEnvelope} className="info-icon" />
+                        <FontAwesomeIcon icon={faEnvelope} className="info-icon" style={{ marginRight: '10px' }} />
                         <p >{contact.email}</p>
                     </div>
                     <div className="info-row d-flex align-items-center">
-                        <FontAwesomeIcon icon={faPhone} className="info-icon" />
+                        <FontAwesomeIcon icon={faPhone} className="info-icon" style={{ marginRight: '10px' }} />
                         <p>{contact.phone}</p>
                     </div>
                     <div className="info-row d-flex align-items-center">
-                        <FontAwesomeIcon icon={faLocationDot} className="info-icon" />
+                        <FontAwesomeIcon icon={faLocationDot} className="info-icon" style={{ marginRight: '10px' }} />
                         <p>{contact.address}</p>
                     </div>
                 </div>
